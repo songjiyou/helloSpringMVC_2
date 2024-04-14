@@ -38,10 +38,13 @@ public class OfferDao {
 
                         Offer offer= new Offer();
 
-                        offer.setId(rs.getInt("id"));
-                        offer.setName(rs.getString("name"));
-                        offer.setEmail(rs.getString("email"));
-                        offer.setText(rs.getString("text"));
+                        offer.setYear(rs.getInt("year"));
+                        offer.setSemester(rs.getInt("semester"));
+                        offer.setCourse_code(rs.getString("course_code"));
+                        offer.setCourse_name(rs.getString("course_name"));
+                        offer.setCourse_category(rs.getString("course_category"));
+                        offer.setProfessor(rs.getString("professor"));
+                        offer.setCredits(rs.getInt("credits"));
 
                         return offer;
                     }
@@ -60,10 +63,13 @@ public class OfferDao {
 
                 Offer offer= new Offer();
 
-                offer.setId(rs.getInt("id"));
-                offer.setName(rs.getString("name"));
-                offer.setEmail(rs.getString("email"));
-                offer.setText(rs.getString("text"));
+                offer.setYear(rs.getInt("year"));
+                offer.setSemester(rs.getInt("semester"));
+                offer.setCourse_code(rs.getString("course_code"));
+                offer.setCourse_name(rs.getString("course_name"));
+                offer.setCourse_category(rs.getString("course_category"));
+                offer.setProfessor(rs.getString("professor"));
+                offer.setCredits(rs.getInt("credits"));
 
                 return offer;
             }
@@ -74,26 +80,34 @@ public class OfferDao {
     // Crud method
     public boolean insert(Offer offer) {
 
-        String name= offer.getName();
-        String email= offer.getEmail();
-        String text = offer.getText();
+        Integer year = offer.getYear();
+        Integer semester = offer.getSemester();
+        String course_code = offer.getCourse_code();
+        String course_name = offer.getCourse_name();
+        String course_category = offer.getCourse_category();
+        String professor = offer.getProfessor();
+        Integer credits = offer.getCredits();
 
-        String sqlStatement= "insert into offers (name, email, text) values (?,?,?)";
+        String sqlStatement= "insert into offers (year, semester, course_code, course_name, course_category, professor, credits) values (?,?,?,?,?,?,?)";
 
-        return (jdbcTemplate.update(sqlStatement, new Object[] {name, email, text}) == 1);
+        return (jdbcTemplate.update(sqlStatement, new Object[] {year, semester, course_code, course_name, course_category, professor, credits}) == 1);
     }
 
     // crUd method
     public boolean update(Offer offer) {
 
         int id = offer.getId();
-        String name= offer.getName();
-        String email= offer.getEmail();
-        String text = offer.getText();
+        Integer year = offer.getYear();
+        Integer semester = offer.getSemester();
+        String course_code = offer.getCourse_code();
+        String course_name = offer.getCourse_name();
+        String course_category = offer.getCourse_category();
+        String professor = offer.getProfessor();
+        Integer credits = offer.getCredits();
 
-        String sqlStatement= "update offers set name=?, email=?, text=? where id=?";
+        String sqlStatement= "update offers set year=?, semester=?, course_code=?, course_name=?, course_category=?, professor=?, credits=? where id=?";
 
-        return (jdbcTemplate.update(sqlStatement, new Object[] {name, email, text, id}) == 1);
+        return (jdbcTemplate.update(sqlStatement, new Object[] {year, semester, course_code, course_name, course_category, professor, credits, id}) == 1);
     }
 
     //cruD method

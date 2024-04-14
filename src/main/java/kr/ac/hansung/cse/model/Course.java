@@ -5,15 +5,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Offer {
+public class Course {
     private int id;
 
     private Integer year;
